@@ -43,16 +43,46 @@ def _cmd_methods(args):
 
 
 def _cmd_demo(args):
-    import os, pathlib
-    here = pathlib.Path(__file__).parent
-    demo_script = here.parent / "examples" / "quickstart.py"
-    if not demo_script.exists():
-        print(f"[clinifs demo] example script not found at {demo_script}")
-        print("Run: clinifs run --x examples/example_microarray.csv "
-              "--y examples/example_labels.csv --method auto --k 20")
-        sys.exit(1)
-    import runpy
-    runpy.run_path(str(demo_script), run_name="__main__")
+    import numpy as np
+    from sklearn.datasets import make_classification
+    from sklearn.model_selection import StratifiedKFold
+    from clinifs import FeatureSelector, RankAggregateFilter
+    from clinifs.evaluation import stability_report
+    from clinifs.selectors import ANOVASelector
+
+    X, y = make_classification(
+        n_samples=120,
+        n_features=300,
+        n_informative=20,
+        n_redundant=10,
+        random_state=42,
+    )
+    X = X.astype(float)
+    print(f"\nLoaded synthetic data: X {X.shape} | classes {np.unique(y)}")
+
+    fs = FeatureSelector(method="auto", k=20)
+    fs.fit(X, y)
+    X_panel = fs.transform(X)
+    print(f"\n[1] Auto tier  : {fs.tier_}")
+    print(f"    Selected   : {fs.selected_indices_[:5]} … ({len(fs.selected_indices_)} genes)")
+    print(f"    X_panel    : {X_panel.shape}")
+
+    rra = RankAggregateFilter(methods=["anova", "mi"], k=20)
+    rra.fit(X, y)
+    print(f"\n[2] RRA(ANOVA+MI) selected {len(rra.selected_indices_)} features")
+
+    skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+    fold_sets = []
+    for tr, _ in skf.split(X, y):
+        sel = ANOVASelector(k=20)
+        sel.fit(X[tr], y[tr])
+        fold_sets.append(sel.selected_indices_)
+    report = stability_report(fold_sets, n_features=X.shape[1])
+    print(f"\n[3] Stability (5-fold ANOVA, k=20)")
+    print(f"    Nogueira Φ      : {report['nogueira_phi']:.4f}")
+    print(f"    Kuncheva Jaccard: {report['kuncheva_jaccard']:.4f}")
+
+    print("\n✓ Quickstart complete.\n")
 
 
 def _cmd_run(args):
