@@ -40,8 +40,8 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/<anonymized-repo>"
-"Bug Tracker" = "https://github.com/<anonymized-repo>/issues"
+Homepage = "https://github.com/xwdshiwo/clinifs"
+"Bug Tracker" = "https://github.com/xwdshiwo/clinifs/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]

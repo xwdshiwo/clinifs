@@ -9,7 +9,7 @@ This document describes how to reproduce the main benchmark results reported in:
 ## Requirements
 
 ```bash
-pip install clinifs "skrebate>=0.62" "mrmr-selection>=0.2.6" "boruta>=0.3"
+pip install "git+https://github.com/xwdshiwo/clinifs.git@v0.1.0" "skrebate>=0.62" "mrmr-selection>=0.2.6" "boruta>=0.3"
 pip install pandas numpy scipy scikit-learn
 ```
 

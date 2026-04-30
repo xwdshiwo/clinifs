@@ -3,7 +3,7 @@ Wrapper (evolutionary) feature selectors – optional EA extra.
 
 Install::
 
-    pip install clinifs
+    pip install "git+https://github.com/xwdshiwo/clinifs.git@v0.1.0"
 
 Included methods
 ----------------

@@ -6,20 +6,20 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://python.org)
-[![PyPI](https://img.shields.io/badge/PyPI-clinifs-orange)](https://pypi.org/project/clinifs)
+[![Release](https://img.shields.io/github/v/release/xwdshiwo/clinifs)](https://github.com/xwdshiwo/clinifs/releases/tag/v0.1.0)
 
 ---
 
 ## Installation
 
 ```bash
-pip install clinifs
+pip install "git+https://github.com/xwdshiwo/clinifs.git@v0.1.0"
 ```
 
 Or from source:
 
 ```bash
-git clone https://github.com/<repo>/clinifs.git
+git clone https://github.com/xwdshiwo/clinifs.git
 cd clinifs
 pip install -e ".[dev]"
 ```
