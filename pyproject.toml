@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clinifs"
+version = "0.1.0"
+description = "Clinical Feature Selection: 13 single-method selectors + adaptive RRA wrapper for cancer gene-expression panels"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+keywords = [
+    "feature selection", "cancer", "microarray",
+    "bioinformatics", "rank aggregation", "evolutionary algorithms"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "scikit-learn>=1.3",
+    "pandas>=1.5",
+    "mrmr-selection>=0.2.6",
+    "skrebate>=0.62",
+    "boruta>=0.3",
+]
+
+[project.scripts]
+clinifs = "clinifs.__main__:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7",
+    "pytest-cov",
+]
+
+[project.urls]
+Homepage = "https://github.com/<anonymized-repo>"
+"Bug Tracker" = "https://github.com/<anonymized-repo>/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["clinifs*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
