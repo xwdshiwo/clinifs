@@ -1,8 +1,8 @@
 # clinifs — Clinical Feature Selection Toolkit
 
-**clinifs** is a scikit-learn-compatible Python package for benchmarking and applying feature selection methods to clinical cancer gene-expression panels. It accompanies the paper:
+**clinifs** is a scikit-learn-compatible Python package for benchmarking and applying feature selection methods to clinical cancer gene-expression panels. It accompanies the manuscript:
 
-> *Multi-dimensional benchmarking of feature selection methods for clinical small-panel cancer gene-expression classification*, Briefings in Bioinformatics, 2026.
+> *Multi-dimensional benchmarking of feature selection methods for clinical small-panel cancer gene-expression classification*, accompanying manuscript (submitted).
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://python.org)
@@ -125,13 +125,13 @@ See [`docs/reproduce_paper.md`](docs/reproduce_paper.md) for step-by-step instru
 ## Citing
 
 ```bibtex
-@article{clinifs2026,
-  title   = {Multi-dimensional benchmarking of feature selection methods for
-             clinical small-panel cancer gene-expression classification},
-  author  = {Author(s) TBD},
-  journal = {Briefings in Bioinformatics},
-  year    = {2026},
-  doi     = {TBD}
+@software{clinifs2026,
+  title     = {clinifs: Clinical Feature Selection Toolkit},
+  author    = {{clinifs contributors}},
+  version   = {0.1.0},
+  year      = {2026},
+  doi       = {10.5281/zenodo.19914970},
+  url       = {https://github.com/xwdshiwo/clinifs}
 }
 ```
 

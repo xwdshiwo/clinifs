@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use clinifs, please cite the archived software release and the accompanying manuscript."
+title: "clinifs: Clinical Feature Selection Toolkit"
+version: "0.1.0"
+doi: "10.5281/zenodo.19914970"
+date-released: "2026-04-30"
+url: "https://github.com/xwdshiwo/clinifs"
+repository-code: "https://github.com/xwdshiwo/clinifs"
+license: "MIT"
+authors:
+  - name: "clinifs contributors"
+preferred-citation:
+  type: article
+  title: "Multi-dimensional benchmarking of feature selection methods for clinical small-panel cancer gene-expression classification"
+  authors:
+    - name: "Author(s) to be added upon submission"
+  year: 2026
+  journal: "Manuscript submitted"

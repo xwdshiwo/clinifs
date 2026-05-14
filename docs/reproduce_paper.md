@@ -2,7 +2,7 @@
 
 This document describes how to reproduce the main benchmark results reported in:
 
-> *Multi-dimensional benchmarking of feature selection methods for clinical small-panel cancer gene-expression classification*, Briefings in Bioinformatics, 2026.
+> *Multi-dimensional benchmarking of feature selection methods for clinical small-panel cancer gene-expression classification*, accompanying manuscript (submitted).
 
 ---
 
@@ -19,8 +19,9 @@ Python 3.10+, tested on Python 3.12.13.
 
 ## Data
 
-All datasets are publicly available from GEO (accession numbers in paper Table 1).  
-Pre-processed CSV files (quantile-normalised, binary labels) are archived at Zenodo: **DOI: TBD**.
+All datasets are publicly available from GEO (accession numbers in paper Table 1). The dataset manifest and reconstruction entry points are maintained in the lightweight benchmark repository:
+
+https://github.com/xwdshiwo/clinifs-benchmark
 
 Directory structure expected:
 
@@ -43,7 +44,10 @@ data/
 
 ## Main benchmark (1 155 evaluation units)
 
-The full 5 × 5 nested CV benchmark is implemented in the paper repository (GitHub: TBD).  
+The full 5 × 5 repeated outer-CV benchmark is implemented in the public benchmark repository:
+
+https://github.com/xwdshiwo/clinifs-benchmark
+
 Using clinifs selectors directly mirrors the paper's implementation:
 
 ```python
@@ -72,7 +76,7 @@ for tr, te in outer_cv.split(X, y):
 print(f"Mean AUC: {np.mean(aucs):.4f} ± {np.std(aucs):.4f}")
 ```
 
-For all 15 methods × 7 k × 11 datasets, use the benchmark runner in the paper repository (`src/run_benchmark.py`).
+For all 15 methods × 7 k × 11 datasets, use the benchmark runner in the paper repository (`run_v2_dispatcher.py` or the lightweight `run_all.py` smoke-test entry point).
 
 Expected result for ANOVA on Bladder_GSE31189, k=20: AUC ≈ 0.62 ± 0.08 (Hard tier).
 
@@ -114,7 +118,7 @@ report = stability_report(fold_sets, n_features=X.shape[1])
 
 ## Pre-computed results
 
-Pre-computed fold-level outputs (AUC per fold, stability per fold, biological annotations) are archived at Zenodo (DOI: TBD) under:
+Full fold-level outputs (AUC per fold, stability per fold, biological annotations) are not stored directly in GitHub because of size constraints, but can be reconstructed from the public accessions, dataset manifest, and benchmark runners. The manuscript reports summary-level outputs organized under:
 
 ```
 benchmark_outputs/
